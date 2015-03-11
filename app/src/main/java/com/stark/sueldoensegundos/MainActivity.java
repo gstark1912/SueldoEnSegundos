@@ -6,10 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.stark.SQLite.Tables.SettingsLite;
+
 
 public class MainActivity extends ActionBarActivity {
 
     LinearLayout btnSettings;
+    LinearLayout btnSalary;
+    LinearLayout btnExit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,29 @@ public class MainActivity extends ActionBarActivity {
                 Intent i = new Intent(getApplicationContext(),
                         SettingsActivity.class);
                 startActivity(i);
+            }
+        });
+
+        btnSalary = (LinearLayout)findViewById(R.id.main_btn_VerSueldo);
+        btnSalary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i;
+                if(new SettingsLite(getApplicationContext()).select().size()>0)
+                        i = new Intent(getApplicationContext(),
+                                SalaryActivity.class);
+                else
+                    i = new Intent(getApplicationContext(),
+                            SettingsActivity.class);
+
+                startActivity(i);
+            }
+        });
+        btnExit= (LinearLayout)findViewById(R.id.main_btn_Salir);
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

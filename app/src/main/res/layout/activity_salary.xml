@@ -6,16 +6,29 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:background="@color/abc_search_url_text_normal"
-    tools:context="com.stark.sueldoensegundos.MainActivity">
+    tools:context="com.stark.sueldoensegundos.SettingsActivity">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_weight="2"
         android:gravity="center"
-        android:textSize="25sp"
-        android:text="Tu sueldo por segundos!"/>
+        android:layout_weight="2"
+        android:textSize="28sp"
+        android:text="Mirá como crece tu sueldo!"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="2"
+        android:src="@drawable/logo"/>
 
     <Space
         android:layout_width="match_parent"
@@ -25,18 +38,36 @@
     <LinearLayout
         android:id="@+id/main_btn_VerSueldo"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/accent_material_dark"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/raincoin"/>
+
+        <TextView
+            android:ems="10"
+            android:id="@+id/salary_txtSueldo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:editable="false"
+            android:inputType="numberDecimal"
+            android:layout_weight="2"
             android:gravity="center"
-            android:textSize="25sp"
-            android:text="Ver Sueldo"/>
+            android:textSize="30sp"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/raincoin"/>
+
 
     </LinearLayout>
 
@@ -46,30 +77,7 @@
         android:layout_weight="1" />
 
     <LinearLayout
-        android:id="@+id/main_btn_Opciones"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/accent_material_dark"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="25sp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Opciones"/>
-
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <LinearLayout
-        android:id="@+id/main_btn_Salir"
+        android:id="@+id/salary_btn_Volver"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/accent_material_dark"
@@ -82,7 +90,7 @@
             android:layout_gravity="center"
             android:textSize="25sp"
             android:gravity="center"
-            android:text="Salir"/>
+            android:text="Volver"/>
 
     </LinearLayout>
 
