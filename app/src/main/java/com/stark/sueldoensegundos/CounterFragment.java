@@ -34,14 +34,24 @@ public class CounterFragment extends Fragment {
     TextSwitcher txtDec2;
     Context ctx;
 
-
+    int n9 = 0;
+    int n8 = 0;
+    int n7 = 0;
+    int n6 = 0;
+    int n5 = 0;
+    int n4 = 0;
+    int n3 = 0;
+    int n2 = 0;
+    int n1 = 0;
+    int dec1 = 0;
+    int dec2 = 0;
 
     private ViewSwitcher.ViewFactory mFactory = new ViewSwitcher.ViewFactory() {
 
         @Override
         public View makeView() {
             TextView myText = new TextView(ctx);
-            myText.setTextAppearance(ctx,R.style.counterTextView);
+            myText.setTextAppearance(ctx, R.style.counterTextView);
             return myText;
         }
     };
@@ -52,51 +62,42 @@ public class CounterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.counter_fragment, container, true);
+        View v = inflater.inflate(R.layout.counter_fragment, container, false);
         ctx = getActivity();
         SettingsLite set = SQLiteMapper.Map(new SettingsLite(ctx).select(), SettingsLite.class).get(0);
         removeUselessTextViews(set.Salary, v);
 
         txt9 = (TextSwitcher) v.findViewById(R.id.counter_txtNum9);
-        txt9.setFactory(mFactory);
         setTextAnimation(txt9);
         txt8 = (TextSwitcher) v.findViewById(R.id.counter_txtNum8);
-        txt8.setFactory(mFactory);
         setTextAnimation(txt8);
         txt7 = (TextSwitcher) v.findViewById(R.id.counter_txtNum7);
-        txt7.setFactory(mFactory);
         setTextAnimation(txt7);
         txt6 = (TextSwitcher) v.findViewById(R.id.counter_txtNum6);
-        txt6.setFactory(mFactory);
         setTextAnimation(txt6);
         txt5 = (TextSwitcher) v.findViewById(R.id.counter_txtNum5);
-        txt5.setFactory(mFactory);
         setTextAnimation(txt5);
         txt4 = (TextSwitcher) v.findViewById(R.id.counter_txtNum4);
-        txt4.setFactory(mFactory);
         setTextAnimation(txt4);
         txt3 = (TextSwitcher) v.findViewById(R.id.counter_txtNum3);
-        txt3.setFactory(mFactory);
         setTextAnimation(txt3);
         txt2 = (TextSwitcher) v.findViewById(R.id.counter_txtNum2);
-        txt2.setFactory(mFactory);
         setTextAnimation(txt2);
         txt1 = (TextSwitcher) v.findViewById(R.id.counter_txtNum1);
-        txt1.setFactory(mFactory);
         setTextAnimation(txt1);
         txtDec1 = (TextSwitcher) v.findViewById(R.id.counter_txtDec1);
-        txtDec1.setFactory(mFactory);
         setTextAnimation(txtDec1);
         txtDec2 = (TextSwitcher) v.findViewById(R.id.counter_txtDec2);
-        txtDec2.setFactory(mFactory);
         setTextAnimation(txtDec2);
         return v;
     }
 
     private void setTextAnimation(TextSwitcher txt) {
-        if(txt!=null) {
+        if (txt != null) {
+            txt.setFactory(mFactory);
             txt.setInAnimation(ctx, R.anim.abc_slide_in_bottom);
             txt.setOutAnimation(ctx, R.anim.abc_slide_out_top);
+            txt.setCurrentText("0");
         }
     }
 
@@ -119,43 +120,41 @@ public class CounterFragment extends Fragment {
 
     public void setSalary(float salary) {
         int subSalary = (int) salary;
-        int n9 = (int) (subSalary / 100000000);
+
+        if (num9)
+            n9 = changeTextIfNecessary(txt9, n9, (subSalary / 100000000));
         subSalary -= (n9 * 100000000);
-        int n8 = (int) (subSalary / 100000000);
-        subSalary -= (n8 * 100000000);
-        int n7 = (int) (subSalary / 1000000);
+        if (num8)
+            n8 = changeTextIfNecessary(txt8, n8, (subSalary / 10000000));
+        subSalary -= (n8 * 10000000);
+        if (num7)
+            n7 = changeTextIfNecessary(txt7, n7, (subSalary / 1000000));
         subSalary -= (n7 * 1000000);
-        int n6 = (int) (subSalary / 100000);
+        n6 = changeTextIfNecessary(txt6, n6, (subSalary / 100000));
         subSalary -= (n6 * 100000);
-        int n5 = (int) (subSalary / 10000);
+        n5 = changeTextIfNecessary(txt5, n5, (subSalary / 10000));
         subSalary -= (n5 * 10000);
-        int n4 = (int) (subSalary / 1000);
+        n4 = changeTextIfNecessary(txt4, n4, (subSalary / 1000));
         subSalary -= (n4 * 1000);
-        int n3 = (int) (subSalary / 100);
+        n3 = changeTextIfNecessary(txt3, n3, (subSalary / 100));
         subSalary -= (n3 * 100);
-        int n2 = (int) (subSalary / 10);
+        n2 = changeTextIfNecessary(txt2, n2, (subSalary / 10));
         subSalary -= (n2 * 10);
-        int n1 = (int) (subSalary / 1);
-        if (num9) {
-            txt9.setText(String.valueOf(n9));
-        }
-        if (num8) {
-            txt8.setText(String.valueOf(n8));
-        }
-        if (num7) {
-            txt7.setText(String.valueOf(n7));
-        }
-        txt6.setText(String.valueOf(n6));
-        txt5.setText(String.valueOf(n5));
-        txt4.setText(String.valueOf(n4));
-        txt3.setText(String.valueOf(n3));
-        txt2.setText(String.valueOf(n2));
-        txt1.setText(String.valueOf(n1));
+        n1 = changeTextIfNecessary(txt1, n1, (subSalary / 1));
 
         String s = (salary + "");
         s = s.substring(s.indexOf('.') + 1);
         if (s.length() < 2) s += "0";
-        txtDec1.setText(String.valueOf((Integer.parseInt(s.substring(0, 1)))));
-        txtDec2.setText(String.valueOf((Integer.parseInt(s.substring(1, 2)))));
+
+        dec1 = changeTextIfNecessary(txtDec1, dec1, Integer.parseInt(s.substring(0, 1)));
+        dec2 = changeTextIfNecessary(txtDec2, dec2, Integer.parseInt(s.substring(1, 2)));
+    }
+
+    private int changeTextIfNecessary(TextSwitcher txt, int n, int newValue) {
+        if (n != newValue) {
+            n = newValue;
+            txt.setText(String.valueOf(n));
+        }
+        return n;
     }
 }
