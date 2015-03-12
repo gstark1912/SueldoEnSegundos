@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/counter_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/darker_gray">
+
+    <TextSwitcher
+        android:id="@+id/counter_txtNum9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        style="@style/counterTextView"/>
+
+    <TextSwitcher
+        android:id="@+id/counter_txtNum8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        style="@style/counterTextView"/>
+
+    <TextSwitcher
+        android:id="@+id/counter_txtNum7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        style="@style/counterTextView"/>
+
+    <TextView
+        android:id="@+id/counter_txtMillionSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="."
+        style="@style/counterTextView"/>
+
+    <TextSwitcher
+        android:id="@+id/counter_txtNum6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        style="@style/counterTextView"/>
+
+    <TextSwitcher
+        android:id="@+id/counter_txtNum5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        style="@style/counterTextView"/>
+
+    <TextSwitcher
+        android:id="@+id/counter_txtNum4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        style="@style/counterTextView"/>
+
+    <TextView
+        android:id="@+id/counter_txtThousandSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="."
+        style="@style/counterTextView"/>
+
+    <TextSwitcher
+        android:id="@+id/counter_txtNum3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        style="@style/counterTextView"/>
+
+    <TextSwitcher
+        android:id="@+id/counter_txtNum2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        style="@style/counterTextView"/>
+
+    <TextSwitcher
+        android:id="@+id/counter_txtNum1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        style="@style/counterTextView"/>
+
+    <TextView
+        android:id="@+id/counter_txtDecimalSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=","
+        style="@style/counterTextView"/>
+
+    <TextSwitcher
+        android:id="@+id/counter_txtDec1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        style="@style/counterTextView"/>
+
+    <TextSwitcher
+        android:id="@+id/counter_txtDec2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="0"
+        style="@style/counterTextView"/>
+
+</LinearLayout>

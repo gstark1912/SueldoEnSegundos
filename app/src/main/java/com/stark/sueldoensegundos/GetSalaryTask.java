@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 
 import java.text.DecimalFormat;
 
-public class GetSalaryTask extends AsyncTask<Void, String, Void> {
+public class GetSalaryTask extends AsyncTask<Void, Float, Void> {
 
     private Context context;
     private boolean keep = true;
@@ -16,16 +16,16 @@ public class GetSalaryTask extends AsyncTask<Void, String, Void> {
     @Override
     protected Void doInBackground(Void... params) {
         while(keep) {
-            String salary = new SalaryCalc(context).getSalaryNow();
+            float salary = new SalaryCalc(context).getSalaryNow();
             publishProgress(salary);
         }
         return null;
     }
 
     @Override
-    protected void onProgressUpdate(String... values) {
+    protected void onProgressUpdate(Float... values) {
         super.onProgressUpdate(values);
-        ((SalaryActivity)context).setSalary(values[0]);
+        ((ISalarySetter)context).setSalary(values[0]);
     }
 
     @Override
@@ -34,4 +34,5 @@ public class GetSalaryTask extends AsyncTask<Void, String, Void> {
         keep = false;
     }
 }
+
 

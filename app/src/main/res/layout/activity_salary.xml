@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="@color/abc_search_url_text_normal"
+    style="@style/background"
     tools:context="com.stark.sueldoensegundos.SettingsActivity">
 
 
@@ -23,18 +23,6 @@
         android:layout_height="0dp"
         android:layout_weight="0.5" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="2"
-        android:src="@drawable/logo"/>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5" />
-
     <LinearLayout
         android:id="@+id/main_btn_VerSueldo"
         android:layout_width="match_parent"
@@ -42,61 +30,13 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/salary_fragment_container"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/raincoin"/>
-
-        <TextView
-            android:ems="10"
-            android:id="@+id/salary_txtSueldo"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:editable="false"
-            android:inputType="numberDecimal"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="30sp"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/raincoin"/>
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <LinearLayout
-        android:id="@+id/salary_btn_Volver"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/accent_material_dark"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:text="Volver"/>
-
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
 </LinearLayout>

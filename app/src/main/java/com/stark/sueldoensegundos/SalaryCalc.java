@@ -19,7 +19,7 @@ public class SalaryCalc {
         _cont = cont;
     }
 
-    public String getSalaryNow(){
+    public float getSalaryNow(){
         SettingsLite setting = SQLiteMapper.Map(new SettingsLite(_cont).select(),SettingsLite.class).get(0);
         Date now = new Date();
         float salaryPerSecond;
@@ -47,7 +47,6 @@ public class SalaryCalc {
         cal.get(Calendar.SECOND);
         */
 
-        DecimalFormat df = new DecimalFormat("#.##");
-        return  df.format(actualSalary);
+        return actualSalary;
     }
 }
