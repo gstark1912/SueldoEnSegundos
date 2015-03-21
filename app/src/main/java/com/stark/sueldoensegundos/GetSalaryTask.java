@@ -11,6 +11,11 @@ public class GetSalaryTask extends AsyncTask<Void, Float, Void> {
     private boolean keep = true;
     public GetSalaryTask(Context c){
         context = c;
+        keep = true;
+    }
+
+    public void stop() {
+        keep = false;
     }
 
     @Override
@@ -28,11 +33,6 @@ public class GetSalaryTask extends AsyncTask<Void, Float, Void> {
         ((ISalarySetter)context).setSalary(values[0]);
     }
 
-    @Override
-    protected void onCancelled() {
-        super.onCancelled();
-        keep = false;
-    }
 }
 
 

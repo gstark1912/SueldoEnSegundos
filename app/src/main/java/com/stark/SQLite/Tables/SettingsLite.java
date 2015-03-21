@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.stark.SQLite.Utils.SQLLiteTable;
 
 public class SettingsLite extends SQLLiteTable {
-	public float Salary;
+	public int Salary;
 
 	public SettingsLite(Context cont) {
 		super(cont);
@@ -15,7 +15,7 @@ public class SettingsLite extends SQLLiteTable {
 	public SettingsLite() {
 	}
 
-    public void Insert(float salary) {
+    public void Insert(int salary) {
         String query;
         query = "INSERT or replace INTO ";
         query += getTableName() + " (Salary)";
@@ -26,7 +26,7 @@ public class SettingsLite extends SQLLiteTable {
         db.close();
     }
 
-    public void Update(float salary) {
+    public void Update(int salary) {
         String query;
         query = "UPDATE ";
         query += getTableName() + " SET Salary = "+salary+"";

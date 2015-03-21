@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -17,10 +18,21 @@ import android.widget.TextView;
 public class SalaryActivity extends FragmentActivity implements ISalarySetter  {
     GetSalaryTask t;
     CounterFragment firstFragment;
+    LinearLayout btnVolver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salary);
+
+        btnVolver = (LinearLayout)findViewById(R.id.salary_btn_Volver);
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
         if (findViewById(R.id.salary_fragment_container) != null) {
 
             // However, if we're being restored from a previous state,
@@ -53,7 +65,7 @@ public class SalaryActivity extends FragmentActivity implements ISalarySetter  {
     @Override
     protected void onPause(){
         super.onPause();
-        t.cancel(true);
+        t.stop();
         t = null;
     }
 

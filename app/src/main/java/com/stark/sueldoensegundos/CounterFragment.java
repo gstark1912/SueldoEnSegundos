@@ -95,8 +95,8 @@ public class CounterFragment extends Fragment {
     private void setTextAnimation(TextSwitcher txt) {
         if (txt != null) {
             txt.setFactory(mFactory);
-            txt.setInAnimation(ctx, R.anim.abc_slide_in_bottom);
-            txt.setOutAnimation(ctx, R.anim.abc_slide_out_top);
+            txt.setInAnimation(ctx, R.anim.abc_slide_in_top);
+            txt.setOutAnimation(ctx, R.anim.abc_slide_out_bottom);
             txt.setCurrentText("0");
         }
     }

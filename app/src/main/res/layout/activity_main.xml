@@ -16,7 +16,8 @@
         android:gravity="center"
         android:textSize="25sp"
         style="@style/SalaryText"
-        android:text="Tu sueldo por segundos!"/>
+        android:textStyle="italic"
+        android:text="Mirá tu sueldo crecer a cada segundo!"/>
 
     <Space
         android:layout_width="match_parent"

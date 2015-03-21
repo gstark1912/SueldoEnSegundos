@@ -13,7 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private ArrayList<SQLLiteTable> tables = getTablesToLoad();
 
 	public DatabaseHelper(Context context) {
-		super(context, dbName, null, 53);
+		super(context, dbName, null, 1);
 	}
 
 	@Override

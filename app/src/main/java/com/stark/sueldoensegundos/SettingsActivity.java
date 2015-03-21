@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.stark.SQLite.Tables.SettingsLite;
 import com.stark.SQLite.Utils.SQLiteMapper;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 public class SettingsActivity extends ActionBarActivity {
 
     LinearLayout btnVolver;
-    LinearLayout btnGuardar;
+    Button btnGuardar;
     EditText txtSalario;
     ArrayList<SettingsLite> array;
     @Override
@@ -32,17 +34,24 @@ public class SettingsActivity extends ActionBarActivity {
             }
         });
 
-        btnGuardar = (LinearLayout)findViewById(R.id.settings_btn_Guardar);
+        btnGuardar = (Button)findViewById(R.id.settings_btn_Guardar);
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (txtSalario.getText().length()==0) txtSalario.setText("0");
+                if(Integer.parseInt(String.valueOf(txtSalario.getText()))>0){
                 if(array.size()>0){
-                    new SettingsLite(getApplicationContext()).Update(Float.parseFloat(String.valueOf(txtSalario.getText())));
+                    new SettingsLite(getApplicationContext()).Update(Integer.parseInt(String.valueOf(txtSalario.getText())));
                 }
                 else {
-                    new SettingsLite(getApplicationContext()).Insert(Float.parseFloat(String.valueOf(txtSalario.getText())));
+                    new SettingsLite(getApplicationContext()).Insert(Integer.parseInt(String.valueOf(txtSalario.getText())));
                 }
                 finish();
+            }
+                else {
+                    Toast msg = Toast.makeText(getApplicationContext(), "El salario debe ser mayor a 0",Toast.LENGTH_LONG);
+                    msg.show();
+                }
             }
         });
 
@@ -50,28 +59,5 @@ public class SettingsActivity extends ActionBarActivity {
         array = SQLiteMapper.Map(new SettingsLite(getApplicationContext()).select(),SettingsLite.class);
         if(array.size()>0)
             txtSalario.setText(String.valueOf(array.get(0).Salary));
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_settings, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

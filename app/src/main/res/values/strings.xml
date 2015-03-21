@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MoneyGrow</string>
+    <string name="app_name">Time is Money</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_main">MoneyGrow</string>
+    <string name="title_activity_main">Time is Money</string>
     <string name="title_activity_settings">Opciones</string>
     <string name="title_activity_salary">Sueldo</string>
-    <string name="action_example">actionexample</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
